@@ -1,0 +1,25 @@
+.architectury-transformer/
+run/
+*.launch
+
+# Gradle
+.gradle/
+bin/
+build/
+
+# IntelliJ
+.idea/
+out/
+*.iml
+*.ipr
+*.iws
+
+# Eclipse
+.settings/
+bin/
+.classpath
+.metadata
+.project
+
+# VSCode
+.vscode/

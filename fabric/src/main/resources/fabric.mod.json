@@ -1,0 +1,26 @@
+{
+	"schemaVersion": 1,
+	"id": "multiversestorage",
+	"version": "${version}",
+	"name": "Multiverse Storage",
+	"description": "Adds storage blocks to move items between different Minecraft servers.",
+	"authors": [ "copygirl" ],
+	"contact": {
+		"homepage": "https://github.com/copygirl/multiverse-storage",
+		"sources": "https://github.com/copygirl/multiverse-storage",
+		"issues": "https://github.com/copygirl/multiverse-storage/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/multiversestorage/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.mcft.copy.multiversestorage.fabric.MultiverseStorageFabric"
+		]
+	},
+	"depends": {
+		"fabric": "*",
+		"minecraft": ">=1.18.1",
+		"architectury": ">=3.2.47"
+	}
+}
