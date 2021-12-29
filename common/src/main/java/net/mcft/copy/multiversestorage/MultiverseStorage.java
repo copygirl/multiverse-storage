@@ -3,10 +3,9 @@ package net.mcft.copy.multiversestorage;
 import dev.architectury.registry.CreativeTabRegistry;
 import dev.architectury.registry.registries.DeferredRegister;
 import dev.architectury.registry.registries.RegistrySupplier;
-import dev.architectury.utils.EnvExecutor;
-import net.mcft.copy.multiversestorage.client.MultiverseStorageClient;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,22 +23,16 @@ public abstract class MultiverseStorage {
 	public static final DeferredRegister<Item>  ITEMS  = DeferredRegister.create(MOD_ID, Registry.ITEM_REGISTRY);
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(MOD_ID, Registry.BLOCK_ENTITY_TYPE_REGISTRY);
 
-	public static final RegistrySupplier<Block> CHEST = BLOCKS.register("chest",
-		() -> new MultiverseChest(Block.Properties.of(Material.WOOD).strength(3.0F)));
-	public static final RegistrySupplier<Item> CHEST_ITEM = ITEMS.register("chest",
-		() -> MultiverseChestItem.create(CHEST.get(), new Item.Properties().tab(CREATIVE_TAB)));
-	public static final RegistrySupplier<BlockEntityType<MultiverseChestEntity>> CHEST_ENTITY = BLOCK_ENTITIES.register("chest",
-		() -> BlockEntityType.Builder.of(MultiverseChestEntity::new, CHEST.get()).build(null));
-
-	public static MultiverseStorageCommon PROXY;
+	public static final RegistrySupplier<Block> CHEST = BLOCKS.register("chest", () ->
+		new MultiverseChest(Block.Properties.of(Material.WOOD).strength(3.0F)));
+	public static final RegistrySupplier<Item> CHEST_ITEM = ITEMS.register("chest", () ->
+		new BlockItem(CHEST.get(), new Item.Properties().tab(CREATIVE_TAB)));
+	public static final RegistrySupplier<BlockEntityType<MultiverseChestEntity>> CHEST_ENTITY = BLOCK_ENTITIES.register("chest", () ->
+		BlockEntityType.Builder.of(MultiverseChestEntity::new, CHEST.get()).build(null));
 
 	public static void init() {
-		PROXY = EnvExecutor.getEnvSpecific(() -> MultiverseStorageClient::create, () -> MultiverseStorageCommon::new);
-
 		BLOCKS.register();
 		ITEMS.register();
 		BLOCK_ENTITIES.register();
-
-		PROXY.init();
 	}
 }

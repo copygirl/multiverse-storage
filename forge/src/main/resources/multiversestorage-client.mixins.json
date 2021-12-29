@@ -1,0 +1,14 @@
+{
+	"required": true,
+	"minVersion": "0.8",
+	"compatibilityLevel": "JAVA_16",
+	"package": "net.mcft.copy.multiversestorage.client.mixin.forge",
+	"mixins": [
+	],
+	"client": [
+		"DynamicItemRendererMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

@@ -16,6 +16,9 @@
 	"entrypoints": {
 		"main": [
 			"net.mcft.copy.multiversestorage.fabric.MultiverseStorageFabric"
+		],
+		"client": [
+			"net.mcft.copy.multiversestorage.client.fabric.MultiverseStorageClientFabric"
 		]
 	},
 	"depends": {
